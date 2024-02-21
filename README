@@ -1,0 +1,14 @@
+$ mkdir ex-01 && cd ex-01
+$ go mod init example.com/ex-01
+
+editing ex-01.go like as ..
+
+package main
+import "fmt"
+
+func main() {
+	fmt.Println("Hello, World!")
+}
+
+$ go run . (go run ex-01.go)
+$ go build . && ./ex-01 (build and  execute the binary file.)
