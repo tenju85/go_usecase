@@ -8,7 +8,7 @@ import (
 
 func main() {
 	fmt.Println("Starting the program...")
-	now := time.Now().Format("2006年01月02日 15:04:05")
+	now := time.Now().Format("2006年01月02日 15時04分05秒")
 	fmt.Println(now)
 	emoji()
 }
