@@ -22,9 +22,11 @@ func main() {
 	emoji()
 	misc()
 	file_read()
-
+	regexp_01()
 	ret := input("Enter your name > ")
 	fmt.Printf("your name is %s\n", ret)
+	file_io()
+	println(randomString(20))
 }
 
 func file_io() {
@@ -84,13 +86,13 @@ func emoji() {
 	for i, cc := range msg {
 		fmt.Printf("code boundary:%d .. %c\n", i, cc)
 	}
-	println(len([]rune(msg)), len(msg))
+	println("==>> ", len([]rune(msg)), len(msg))
 	rca := []rune(msg)
 	for i, cc := range rca {
 		fmt.Printf("(%d) .. %c\n", i, cc)
 	}
 	ss := []rune(rca[2:4])
-	fmt.Printf("%c %c %c\n", ss[0], ss, rca[2:4]) // slice of runes
+	fmt.Printf(">> %c %c %c\n", ss[0], ss, rca[2:4]) // slice of runes
 }
 func misc(){
 	matching := lo.FilterMap([]string{"cpu", "gpu", "mouse", "keyboard"}, func(x string, _ int) (string, bool) {
@@ -99,9 +101,19 @@ func misc(){
     }
     return "", false
 })
-println(matching)
+fmt.Printf("matching ... %v", matching)
 // []string{"xpu", "xpu"}
 }
 func file_read(){
-
+	fileName := "go.mod"
+	content, err := os.ReadFile(fileName)
+	if err != nil {
+		log.Fatal(err)
+	}
+	println(string(content))
+	err2 := os.WriteFile(fileName+".bak", content, 0644)
+	if err2 != nil {
+		log.Fatal(err2)
+	}
+	println("--- written to " + fileName + ".bak")
 }
